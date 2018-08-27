@@ -11,6 +11,18 @@
       - app2.yaml
       - db.yaml
 
+  - name: Remove a flavor
+    include_role:
+      name: osp-remove-flavor
+
+  - name: Remove Security Groups
+    include_role:
+      name: osp-remove-securitygroup
+
   - name: Remove key pair
     include_role:
       name: osp-remove-keypair
+
+  - name: Remove all networks
+    include_role:
+      name: osp-remove-networ
