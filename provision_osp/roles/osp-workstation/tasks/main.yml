@@ -13,6 +13,12 @@
      - python-pip
      - gcc
      - ansible
+  
+  - name: Update all modules before installing shade library
+    pip:
+      requirements: requirements.txt
+    
+
   - name: Install shade library for intercating with Openstack clouds
     pip:
      name: shade       
