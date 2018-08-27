@@ -26,7 +26,7 @@
     include_role:
        name: osp-instances
        vars_from: db.yaml
-## Alternate Method to create dynmaic inventory
+## Alternate Method to create dynamic inventory
   - name: Gather facts
     include_role: 
        name: osp-facts
