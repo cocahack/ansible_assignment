@@ -2,4 +2,4 @@
 - hosts: jumpbox
   become: yes
   roles:
-    - osp-workstation
+    - osp-remove-workstation
