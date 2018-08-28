@@ -6,7 +6,7 @@
   - os_network:
       cloud: ospcloud
       state: absent
-      name: ext_network
+      name: "{{ item }}"
     with_items:
       - ext_network
       - int_network

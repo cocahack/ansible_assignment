@@ -1,16 +1,6 @@
 ---
 - hosts: jumpbox
   tasks:
-  - name: Remove all instance
-    include_role:
-       name: osp-remove-instances
-       vars_from: "{{ item }}"
-    loop:
-      - frontend.yaml
-      - app1.yaml
-      - app2.yaml
-      - db.yaml
-
   - name: Remove a flavor
     include_role:
       name: osp-remove-flavor
@@ -25,4 +15,20 @@
 
   - name: Remove all networks
     include_role:
-      name: osp-remove-networ
+      name: osp-remove-network
+
+  - name: Remove a RHEL template
+    os_image:
+      cloud: ospcloud
+      name: rhel-guest
+      container_format: bare
+      disk_format: qcow2
+      state: absent
+      filename: /tmp/rhel.qcow2
+    tags:
+      - tested
+
+  - name: Remove RHEL image
+    file:
+      path: /tmp/rhel.qcow2
+      state: absent

@@ -1,13 +1,15 @@
 ---
 - hosts: jumpbox
-  tasks:   
+  tasks:
   - name: Download RHEL image
     get_url:
       url: http://www.opentlc.com/download/osp_advanced_networking/rhel-guest-image-7.2-20151102.0.x86_64.qcow2
       dest: /tmp/rhel.qcow2
     tags:
       - tested
-  - os_image:
+
+  - name: Create a RHEL template
+    os_image:
       cloud: ospcloud
       name: rhel-guest
       container_format: bare
@@ -16,3 +18,20 @@
       filename: /tmp/rhel.qcow2
     tags:
       - tested
+
+  - name: Create OSP Network
+    include_role:
+     name: osp-network
+
+  - name: Create a Key Pair
+    include_role:
+      name: osp-keypair
+
+  - name: Create Security Groups
+    include_role:
+      name: osp-securitygroup
+
+  - name: Create a flavor
+    include_role:
+      name: osp-flavor
+
