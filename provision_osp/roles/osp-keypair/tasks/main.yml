@@ -11,4 +11,4 @@
       state: present
       name: ansible_ssh
 #      public_key_file: "{{ ansible_env.HOME }}/.ssh/test_id_rsa.pub"
-      public_key_file: "{{ ansible_env.HOME }}/.ssh/{{ OSP_KEY_FILE_NAME }}.pub"
+      public_key_file: "{{ ansible_env.USER }}/.ssh/{{ OSP_KEY_FILE_NAME }}.pub"
