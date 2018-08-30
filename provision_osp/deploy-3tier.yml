@@ -6,9 +6,9 @@
   - name: osp-facts
 # Setup front-end load balancer tier
 
-
 - name: setup load-balancer tier
   hosts: frontends
+  remote_user: cloud-user
   become: yes
   roles:
     - {name: base-config, tags: base-config}
@@ -19,7 +19,6 @@
 - name: setup app tier
   hosts: apps
   become: yes
-  gather_facts: false
   roles:
     - {name: base-config, tags: base-config}
     - {name: app-tier, tags: [apps, tomcat]}

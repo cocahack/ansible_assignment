@@ -2,7 +2,7 @@
   - name: Copy openstack private key
     copy:
       src: /root/.ssh/openstack.pem
-      dest: /root/.ssh/openstack.pem
+      dest: /home/cloud-user/.ssh/openstack.pem
       mode: 0400
     
   - name: Install epel rpm from remote repo
